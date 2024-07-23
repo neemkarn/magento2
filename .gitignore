@@ -1,0 +1,30 @@
+# Magento specific files and directories to ignore
+/app/etc/env.php
+/app/etc/config.php
+/var/*
+!/var/.htaccess
+/pub/media/*
+/pub/static/*
+!/pub/static/.htaccess
+/generated/*
+/vendor/*
+/composer.lock
+
+# Composer vendor directory (managed by composer)
+/vendor/
+
+
+# Environment files
+/.env
+/.env.local
+/.env.*.local
+
+
+# Log files
+/logs
+*.log
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+*.iml

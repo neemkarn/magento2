@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <head>
+        <css src="Razoyo_CarProfile::css/car-list.css"/>
+    </head>
+    <body>      
+        <referenceContainer name="content">         
+            <block class="Magento\Framework\View\Element\Template" name="razoyo_carprofile_customer_view" template="Razoyo_CarProfile::customer/view.phtml"  cacheable="false" >
+                <block class="Razoyo\CarProfile\Block\Customer\SelectCar" name="razoyo_carprofile_customer_select_car" template="Razoyo_CarProfile::customer/select_car.phtml" />
+                <block class="Razoyo\CarProfile\Block\Customer\MySelectedCar" name="razoyo_carprofile_customer_my_selected_car" template="Razoyo_CarProfile::customer/my_selected_car.phtml" />
+                <block class="Magento\Framework\View\Element\Text\ListText" name="additional.product.info"/>
+            </block>
+        </referenceContainer>      
+    </body>
+</page>

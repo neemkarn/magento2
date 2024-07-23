@@ -1,0 +1,52 @@
+<?php $carData = $block->getCustomerCarInfo(); $block->getNameInLayout();  ?>
+<?php if(!empty($carData)): ?>
+<div class="car-list">
+    <?php foreach ($carData as $data) : ?>
+        <?php $car = $data['car']; ?>
+        <div class="car-item" data-car-id="<?php echo $car['id']; ?>">
+            <div class="car-image">
+                <img src="<?php echo $car['image']; ?>" alt="<?php echo $car['make'] . ' ' . $car['model']; ?>">
+                <div class="remove-button" onclick="removeCar('<?php echo $car['id']; ?>')">Remove</div>
+            </div>
+            <div class="car-details">
+                <h2><?php echo $car['year'] . ' ' . $car['make'] . ' ' . $car['model']; ?></h2>
+                <p>MPG: <?php echo $car['mpg']; ?></p>
+                <p>Seats: <?php echo $car['seats']; ?></p>
+                <p class="price">$<?php echo number_format($car['price']); ?></p>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+<?php else: ?>
+<h1>Please add car from dropdown</h1>
+<?php endif; ?>
+<script type="text/javascript">
+    require([
+        'jquery',
+        'jquery/ui'
+    ], function($) {
+        $(document).ready(function () {
+            window.removeCar = function(carId) {
+                $.ajax({
+                    url: '<?= $block->getUrl('razoyo_carprofile/customer/removecar'); ?>',
+                    type: 'POST',
+                    data: {
+                        car_id: carId
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                               window.location.reload();
+                        } else {
+                            alert('Error: ' + (response.message || 'An error occurred while removing the car.'));
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('AJAX error:', error);
+                        alert('Error occurred while removing the car.');
+                    }
+                });
+            };
+        });
+    });
+</script>

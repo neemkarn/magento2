@@ -1,0 +1,77 @@
+<?php
+/** @var \Razoyo\CarProfile\Block\Customer\View $block */
+
+// Get all cars from API
+$carsData = $block->getCarsData();
+$customerCarInfo = $block->getCarInfoByCustomerId();
+// Extract car IDs associated with the customer
+$customerCarIds = array_column($customerCarInfo, 'car_id');
+
+// Filter out cars that are already associated with the customer
+$availableCars = [];
+if ($carsData && isset($carsData['cars'])) {
+    foreach ($carsData['cars'] as $car) {
+        if (!in_array($car['id'], $customerCarIds)) {
+            $availableCars[] = $car;
+        }
+    }
+}
+?>
+<form id="select-car-form">
+    <div class="form-group">
+        <label for="car-select"><?php echo __('Select Car'); ?></label>
+        <select class="form-control" id="car-select" name="car_id">
+            <?php if (!empty($availableCars)): ?>
+                <?php foreach ($availableCars as $car): ?>
+                    <option value="<?php echo htmlspecialchars($car['id']); ?>">
+                        <?php echo htmlspecialchars($car['make'] . ' ' . $car['model'] . ' (' . $car['year'] . ')'); ?>
+                    </option>
+                <?php endforeach; ?>
+            <?php else: ?>
+                <option value=""><?php echo __('No cars available'); ?></option>
+            <?php endif; ?>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-primary"><?php echo __('Submit'); ?></button>
+</form>
+
+<script type="text/javascript">
+    require([
+        'jquery',
+        'jquery/ui',
+        'Magento_Ui/js/modal/modal'
+    ], function($, jqueryUi, modal) {
+        $(document).ready(function () {
+            // Handle form submission
+            $('#select-car-form').on('submit', function(e) {
+                e.preventDefault();
+                var carId = $('#car-select').val();
+                console.log('Selected Car ID:', carId);
+
+                // AJAX request to save data
+                $.ajax({
+                    url: '<?= $block->getUrl('razoyo_carprofile/customer/savecarinfo'); ?>',
+                    type: 'POST',
+                    data: {
+                        car_id: carId
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        console.log(response);
+                        if (response.success) {
+                            alert('Car information saved successfully.');
+                            // Reload the page to reflect the changes
+                            window.location.reload();
+                        } else {
+                            alert('Error occurred while saving car information: ' + (response.message || 'An unknown error occurred.'));
+                        }
+                    },
+                    error: function(xhr, status, error) {
+                        console.error('Error saving car information:', error);
+                        alert('Error occurred while saving car information.');
+                    }
+                });
+            });
+        });
+    });
+</script>

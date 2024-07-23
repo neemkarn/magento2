@@ -1,0 +1,268 @@
+/* External CSS for car list */
+.car-list {
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+justify-content: center;
+}
+
+.car-item {
+border: 1px solid #ccc;
+border-radius: 10px;
+overflow: hidden;
+width: calc(33.33% - 20px); /* Adjust width for three items per row */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+transition: transform 0.3s ease;
+margin-bottom: 20px;
+position: relative;
+}
+
+.car-item:hover {
+transform: scale(1.05);
+}
+
+.car-image {
+height: 180px; /* Adjust height to make image section smaller */
+overflow: hidden;
+position: relative;
+}
+
+.car-image img {
+width: 100%;
+height: 100%;
+object-fit: cover;
+display: block;
+}
+
+.remove-button {
+position: absolute;
+top: 10px;
+right: 10px;
+background-color: #e60000;
+color: #fff;
+padding: 5px 10px;
+border-radius: 5px;
+cursor: pointer;
+display: none;
+z-index: 10;
+}
+
+.car-item:hover .remove-button {
+display: block;
+}
+
+.car-details {
+padding: 15px;
+text-align: center;
+}
+
+.car-details h2 {
+font-size: 1.2em;
+margin: 10px 0;
+}
+
+.car-details p {
+margin: 5px 0;
+color: #555;
+}
+
+.car-details .price {
+font-size: 1.5em;
+color: #e60000;
+font-weight: bold;
+}
+
+/* Style the form container */
+#select-car-form {
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+background-color: #f9f9f9;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form group */
+#select-car-form .form-group {
+margin-bottom: 15px;
+}
+
+/* Style the label */
+#select-car-form .form-group label {
+font-size: 16px;
+font-weight: bold;
+color: #333;
+display: block;
+margin-bottom: 8px;
+}
+
+/* Style the select dropdown */
+#select-car-form .form-control {
+width: 100%;
+padding: 5px;
+font-size: 14px;
+line-height: 1.5;
+color: #333;
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 4px;
+-webkit-appearance: none; /* Remove default styling in Chrome */
+-moz-appearance: none;/* Remove default styling in Firefox */
+appearance: none; /* Remove default styling in modern browsers */
+}
+
+/* Style the select dropdown with a custom arrow */
+#select-car-form .form-control::-ms-expand {
+display: none; /* Hide the default arrow in Internet Explorer */
+}
+
+#select-car-form .form-group {
+position: relative;
+}
+
+#select-car-form .form-control::after {
+content: '';
+position: absolute;
+top: 50%;
+right: 10px;
+width: 0;
+height: 0;
+border-left: 6px solid transparent;
+border-right: 6px solid transparent;
+border-top: 6px solid #333;
+transform: translateY(-50%);
+pointer-events: none;
+}
+
+/* Style the submit button */
+#select-car-form .btn-primary {
+background-color: #007bff;
+color: #fff;
+border: none;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+#select-car-form .btn-primary:hover {
+background-color: #0056b3;
+}
+
+/* Optional: Style the button on focus and active states */
+#select-car-form .btn-primary:focus, .btn-primary:active {
+outline: none;
+box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form container */
+#select-car-form {
+max-width: 600px;
+margin: 0 auto;
+padding: 20px;
+background-color: #f9f9f9;
+border-radius: 8px;
+box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the form group */
+#select-car-form .form-group {
+margin-bottom: 15px;
+}
+
+/* Style the label */
+#select-car-form .form-group label {
+font-size: 16px;
+font-weight: bold;
+color: #333;
+display: block;
+margin-bottom: 8px;
+}
+
+/* Style the select dropdown */
+#select-car-form .form-control {
+width: 100%;
+padding: 5px;
+font-size: 14px;
+line-height: 1.5;
+color: #333;
+background-color: #fff;
+border: 1px solid #ccc;
+border-radius: 4px;
+-webkit-appearance: none; /* Remove default styling in Chrome */
+-moz-appearance: none;/* Remove default styling in Firefox */
+appearance: none; /* Remove default styling in modern browsers */
+}
+
+/* Style the select dropdown with a custom arrow */
+#select-car-form .form-control::-ms-expand {
+display: none; /* Hide the default arrow in Internet Explorer */
+}
+
+#select-car-form .form-group {
+position: relative;
+}
+
+#select-car-form .form-control::after {
+content: '';
+position: absolute;
+top: 50%;
+right: 10px;
+width: 0;
+height: 0;
+border-left: 6px solid transparent;
+border-right: 6px solid transparent;
+border-top: 6px solid #333;
+transform: translateY(-50%);
+pointer-events: none;
+}
+
+/* Style the submit button */
+#select-car-form .btn-primary {
+background-color: #007bff;
+color: #fff;
+border: none;
+padding: 10px 20px;
+font-size: 16px;
+font-weight: bold;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+#select-car-form .btn-primary:hover {
+background-color: #0056b3;
+}
+
+/* Optional: Style the button on focus and active states */
+#select-car-form .btn-primary:focus, .btn-primary:active {
+outline: none;
+box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.my-car-tabs ul.nav-tabs {
+    display: flex;
+    justify-content: space-around; /* Adjust as needed */
+    border-bottom: 1px solid #dee2e6; /* Bootstrap default border color */
+    padding-left: 0;
+    margin-bottom: 1rem;
+    list-style: none;
+}
+.my-car-tabs ul.nav-tabs li.nav-item {
+    flex: 1;
+    text-align: center;
+}
+.my-car-tabs ul.nav-tabs li.nav-item a.nav-link {
+    border: none;
+    border-radius: 0;
+    color: #495057; /* Bootstrap default text color */
+    background-color: transparent;
+    padding: .5rem 1rem;
+}
+.my-car-tabs ul.nav-tabs li.nav-item a.nav-link.active {
+    font-weight: bold;
+    color: #007bff; /* Bootstrap default active link color */
+    border-bottom: 2px solid #007bff; /* Bootstrap default active link border color */
+}
